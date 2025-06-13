@@ -38,8 +38,10 @@
 #	include <direct.h>
 			// For _getdcwd()
 #else
+#ifdef HAVE_GETPWUID
 #	include <pwd.h>
 			// For getpwuid()
+#endif
 #endif
 
 /* Try to find a suitable value for %APPDATA% if it isn't defined on
@@ -243,19 +245,25 @@ getHomeDir (void)
 #ifdef WIN32
 	return getenv ("HOME");
 #else
-	const char *home;
-	struct passwd *pw;
+        const char *home;
+#ifdef HAVE_GETPWUID
+        struct passwd *pw;
+#endif
 
-	home = getenv ("HOME");
-	if (home != NULL)
-		return home;
+        home = getenv ("HOME");
+        if (home != NULL)
+                return home;
 
-	pw = getpwuid (getuid ());
-	if (pw == NULL)
-		return NULL;
-	// NB: pw points to a static buffer.
+#ifdef HAVE_GETPWUID
+        pw = getpwuid (getuid ());
+        if (pw == NULL)
+                return NULL;
+        // NB: pw points to a static buffer.
 
-	return pw->pw_dir;
+        return pw->pw_dir;
+#else
+        return NULL;
+#endif
 #endif
 }
 

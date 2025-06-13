@@ -827,13 +827,17 @@ EOF
 		DEFNAME="HAVE_$NAME"
 	fi
 
-	if have_header "$1"; then
-		add_symbol "$DEFNAME" "#define $DEFNAME"
-		add_symbol "${DEFNAME}_FLAG" 1
-	else
-		add_symbol "$DEFNAME" "#undef $DEFNAME"
-		add_symbol "${DEFNAME}_FLAG" 0
-	fi
+        if [ "$1" = "regex.h" ] && [ "$HOST_SYSTEM" = "SWITCH" ]; then
+                build_message "POSIX regex not available on libnx."
+                add_symbol "$DEFNAME" "#undef $DEFNAME"
+                add_symbol "${DEFNAME}_FLAG" 0
+        elif have_header "$1"; then
+                add_symbol "$DEFNAME" "#define $DEFNAME"
+                add_symbol "${DEFNAME}_FLAG" 1
+        else
+                add_symbol "$DEFNAME" "#undef $DEFNAME"
+                add_symbol "${DEFNAME}_FLAG" 0
+        fi
 }
 
 # Description: check if a macro is available.
