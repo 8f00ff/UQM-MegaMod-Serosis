@@ -268,17 +268,9 @@ ova_Seek (THIS_PTR, uint32 pcm_pos)
 static uint32
 ova_GetFrame (THIS_PTR)
 {
-	TFB_OggSoundDecoder* ova = (TFB_OggSoundDecoder*) This;
-	// this is the closest to a frame there is in ogg vorbis stream
-	// doesn't seem to be a func to retrive it
-#ifdef OVCODEC_TREMOR
-#if defined(ANDROID) || defined(__ANDROID__)
-	return ova->vf.os.pageno;
-#else
-	return ova->vf.os->pageno;
-#endif
-#else
-	return ova->vf.os.pageno;
-#endif  /* OVCODEC_TREMOR */
+        TFB_OggSoundDecoder* ova = (TFB_OggSoundDecoder*) This;
+        // this is the closest to a frame there is in ogg vorbis stream
+        // doesn't seem to be a func to retrive it
+        return ova->vf.os.pageno;
 }
 
