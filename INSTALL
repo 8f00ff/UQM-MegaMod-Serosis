@@ -136,7 +136,8 @@ NINTENDO SWITCH
 ---------------
 To build for the Nintendo Switch you must have devkitA64 and the
 Switch portlibs installed from devkitPro.  Set the environment variables
-shown in build/unix/README.crossbuild and invoke the build script with
+shown in build/unix/README.crossbuild and ensure LDFLAGS includes
+"-specs=libnx.specs". Invoke the build script with
 
     ./build.sh uqm config
     ./build.sh uqm
