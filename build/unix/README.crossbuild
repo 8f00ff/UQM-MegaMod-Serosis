@@ -61,7 +61,7 @@ portlibs. Set the following environment variables before configuring:
     export PROG_gcc_FILE=aarch64-none-elf-gcc
     export PKG_CONFIG_PATH=$PORTLIBS_PREFIX/lib/pkgconfig
     export CFLAGS="-I$PORTLIBS_PREFIX/include"
-    export LDFLAGS="-L$PORTLIBS_PREFIX/lib"
+    export LDFLAGS="-L$PORTLIBS_PREFIX/lib -specs=libnx.specs"
 
 Then run:
 
