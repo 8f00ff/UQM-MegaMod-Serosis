@@ -144,7 +144,8 @@ struct option
    errors, only prototype getopt for the GNU C library.  */
 extern int getopt (int __argc, char *const *__argv, const char *__shortopts);
 # else /* not __GNU_LIBRARY__ */
-extern int getopt ();
+extern int getopt (int __argc, char *const *__argv,
+                   const char *__shortopts);
 # endif /* __GNU_LIBRARY__ */
 
 # ifndef __need_getopt
