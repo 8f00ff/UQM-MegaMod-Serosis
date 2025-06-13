@@ -37,6 +37,7 @@ Done.
 You can start the game now with the command 'uqm'.
 You may also delete the source (with the .uqm files you put in
 content/) if you want.
+On systems where POSIX regex or getpwuid are unavailable, the build disables related features. Home directory expansion may fail and some pattern matching routines will operate in a reduced mode.
 
 
 If you want to recompile with other options, you can use

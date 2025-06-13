@@ -63,6 +63,9 @@
 /* Defined if your system has _Bool of its own */
 @HAVE__BOOL@
 
+/* Defined if your system has getpwuid */
+@HAVE_GETPWUID@
+
 #endif  /* CONFIG_WIN_H_ */
 
 
