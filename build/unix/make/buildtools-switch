@@ -1,0 +1,11 @@
+# Definitions for build tools for the makefile used by the UQM build system.
+# This file defines the build commands for Nintendo Switch (devkitA64/libnx).
+
+include build/unix/make/buildtools-generic
+
+# Link using libnx and portlibs without the default crt0
+# $(LDFLAGS) should provide library paths to the Switch portlibs
+
+define act_link
+$(LINK) -nostartfiles -o "$@" $^ $(LDFLAGS) -lnx -lm
+endef

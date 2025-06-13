@@ -47,3 +47,26 @@ Start the compilation:
 	./build.sh uqm
 
 
+
+Nintendo Switch
+---------------
+Building for the Switch requires devkitA64 from devkitPro and the Switch
+portlibs. Set the following environment variables before configuring:
+
+    export DEVKITPRO=/path/to/devkitpro
+    export DEVKITARM=$DEVKITPRO/devkitA64
+    export PORTLIBS_PREFIX=$DEVKITPRO/portlibs/switch
+    export PATH=$DEVKITARM/bin:$PATH
+    export BUILD_HOST=switch
+    export PROG_gcc_FILE=aarch64-none-elf-gcc
+    export PKG_CONFIG_PATH=$PORTLIBS_PREFIX/lib/pkgconfig
+    export CFLAGS="-I$PORTLIBS_PREFIX/include"
+    export LDFLAGS="-L$PORTLIBS_PREFIX/lib"
+
+Then run:
+
+    ./build.sh uqm config
+    ./build.sh uqm
+
+The build output is an ELF file named UrQuanMasters. Convert it using
+devkitPro's `elf2nro` tool to run on the console.

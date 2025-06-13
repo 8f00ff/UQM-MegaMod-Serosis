@@ -131,3 +131,15 @@ everything needed to run the program. Because of the way brew handles
 system dependencies, the program must be built differently to be
 redistributable. See INSTALL.macos for details on how to do this.
 
+
+NINTENDO SWITCH
+---------------
+To build for the Nintendo Switch you must have devkitA64 and the
+Switch portlibs installed from devkitPro.  Set the environment variables
+shown in build/unix/README.crossbuild and invoke the build script with
+
+    ./build.sh uqm config
+    ./build.sh uqm
+
+The build creates an ELF binary named UrQuanMasters. Use devkitPro's
+`elf2nro` tool to convert it for running on the console.
