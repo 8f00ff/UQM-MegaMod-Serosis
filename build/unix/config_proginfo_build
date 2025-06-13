@@ -185,6 +185,12 @@ PROG_gcc_NAME="GNU C compiler"
 PROG_gcc_FILE="gcc"
 PROG_gcc_ACTION=""
 PROG_gcc_VERSION='$(gcc --version)'
+case "$HOST_SYSTEM" in
+       SWITCH)
+               PROG_gcc_FILE="aarch64-none-elf-gcc"
+               PROG_gcc_VERSION='$(aarch64-none-elf-gcc --version)'
+               ;;
+esac
 
 
 ### sed ###

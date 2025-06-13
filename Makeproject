@@ -9,12 +9,12 @@ else
 	uqm_NAME=UrQuanMasters           # File name of executable
 fi
 case "$HOST_SYSTEM" in
-	ARMV5|WINSCW|GCCE)
-		uqm_NAME="uqm.lib"
-		;;
-	MINGW32*|CYGWIN*)
-		uqm_NAME="$uqm_NAME.exe"
-		;;
+        ARMV5|WINSCW|GCCE)
+                uqm_NAME="uqm.lib"
+                ;;
+        MINGW32*|CYGWIN*)
+                uqm_NAME="$uqm_NAME.exe"
+                ;;
 esac
 uqm_CFLAGS="$uqm_CFLAGS -Isrc"
 uqm_CXXFLAGS="$uqm_CXXFLAGS -Isrc"
