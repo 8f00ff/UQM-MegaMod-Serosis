@@ -3,9 +3,9 @@
 
 include build/unix/make/buildtools-generic
 
-# Link using libnx and portlibs without the default crt0
+# Link using libnx.specs and portlibs
 # $(LDFLAGS) should provide library paths to the Switch portlibs
 
 define act_link
-$(LINK) -nostartfiles -o "$@" $^ $(LDFLAGS) -lnx -lm
+$(LINK) -specs=libnx.specs -o "$@" $^ $(LDFLAGS) -lnx
 endef
